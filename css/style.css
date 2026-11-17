@@ -1,0 +1,517 @@
+/* ==========================================================
+   style.css - Landing page profil Karlita Agustin
+   Urutan: variabel warna, dasar, menu, beranda, tentang,
+   keahlian, portofolio dan sertifikat, kontak, footer
+   ========================================================== */
+
+:root {
+  /* Palet: biru + putih */
+  --bg:#F4F8FF;
+  --surface:#FFFFFF;
+  --ink:#0B1F44;
+  --muted:#4A5D80;
+  --line:#D6E0F2;
+  --accent:#1D4ED8;
+  --on-accent:#FFFFFF;
+  --accent2:#0369A1;
+  --wa:#1D4ED8;
+  --wa-text:#FFFFFF;
+  --header-bg:#FFFFFF;
+  --header-ink:#0B1F44;
+  --contact-bg:#E3EDFF;
+  --footer-bg:#1E40AF;
+  color-scheme:light;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+
+@media (prefers-color-scheme:dark) {
+  :root:not([data-theme="light"]) {
+    --bg:#0A1630;
+    --surface:#111F3F;
+    --ink:#EAF1FF;
+    --muted:#A5B6D6;
+    --line:#22345C;
+    --accent:#60A5FA;
+    --on-accent:#07142E;
+    --accent2:#7DD3FC;
+    --wa:#60A5FA;
+    --wa-text:#07142E;
+    --header-bg:#12264F;
+    --header-ink:#EAF1FF;
+    --contact-bg:#14274F;
+    --footer-bg:#1E3A8A;
+    color-scheme:dark;
+  }
+}
+
+:root[data-theme="dark"] {
+  --bg:#0A1630;
+  --surface:#111F3F;
+  --ink:#EAF1FF;
+  --muted:#A5B6D6;
+  --line:#22345C;
+  --accent:#60A5FA;
+  --on-accent:#07142E;
+  --accent2:#7DD3FC;
+  --wa:#60A5FA;
+  --wa-text:#07142E;
+  --header-bg:#12264F;
+  --header-ink:#EAF1FF;
+  --contact-bg:#14274F;
+  --footer-bg:#1E3A8A;
+  color-scheme:dark;
+}
+
+*,*::before,*::after {
+  box-sizing:border-box;
+}
+
+html {
+  scroll-behavior:smooth;
+  scroll-padding-top:5rem;
+}
+
+body {
+  margin:0;
+  background:var(--bg);
+  color:var(--ink);
+  font:400 1.0625rem/1.65 "Source Sans 3",system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+
+h1,h2,h3 {
+  font-family:"Bricolage Grotesque","Trebuchet MS",system-ui,sans-serif;
+  line-height:1.15;
+  margin:0;
+}
+
+.wrap {
+  max-width:78rem;
+  margin:0 auto;
+  padding:0 clamp(1.25rem,5vw,3.5rem);
+}
+
+section {
+  padding:4rem 0;
+}
+
+section+section {
+  border-top:1px solid var(--line);
+}
+
+h2 {
+  font-size:clamp(1.6rem,4vw,2.1rem);
+  margin-bottom:1.5rem;
+}
+
+h2::after {
+  content:"";
+  display:block;
+  width:3rem;
+  height:4px;
+  border-radius:4px;
+  background:var(--accent2);
+  margin-top:.6rem;
+}
+
+p {
+  max-width:62ch;
+  margin:0 0 1rem;
+}
+
+a:focus-visible,button:focus-visible {
+  outline:3px solid var(--accent);
+  outline-offset:3px;
+}
+
+.alt {
+  background:var(--surface);
+}
+
+/* Menu */
+.menu {
+  position:sticky;
+  top:0;
+  z-index:20;
+  background:var(--header-bg);
+  border-bottom:1px solid var(--line);
+  box-shadow:0 1px 10px rgba(11,31,68,.06);
+}
+
+.bar {
+  display:flex;
+  align-items:center;
+  justify-content:flex-end;
+  min-height:4.2rem;
+}
+
+.menu nav ul {
+  display:flex;
+  gap:.4rem;
+  list-style:none;
+  margin:0;
+  padding:0;
+}
+
+.menu nav a {
+  display:block;
+  padding:.55rem 1rem;
+  color:var(--header-ink);
+  text-decoration:none;
+  font-weight:600;
+  font-size:1.02rem;
+}
+
+.menu nav a:hover {
+  color:var(--accent);
+}
+
+.burger {
+  display:none;
+  background:none;
+  border:1px solid var(--muted);
+  border-radius:10px;
+  width:2.8rem;
+  height:2.8rem;
+  color:var(--header-ink);
+  cursor:pointer;
+  align-items:center;
+  justify-content:center;
+}
+
+.burger svg {
+  width:1.4rem;
+  height:1.4rem;
+  stroke:currentColor;
+  fill:none;
+  stroke-width:2;
+  stroke-linecap:round;
+}
+
+@media(max-width:760px) {
+  .burger {
+    display:inline-flex;
+  }
+  .menu nav {
+    position:absolute;
+    left:0;
+    right:0;
+    top:100%;
+    background:var(--header-bg);
+    border-bottom:1px solid var(--line);
+    display:none;
+    padding:.5rem 1.25rem 1rem;
+  }
+  .menu nav.open {
+    display:block;
+  }
+  .menu nav ul {
+    flex-direction:column;
+    gap:0;
+  }
+}
+
+/* Beranda */
+.hero {
+  padding:2rem 0 2.5rem;
+  display:flex;
+  align-items:center;
+}
+
+.hero .wrap {
+  width:100%;
+}
+
+@media(min-width:860px) {
+  .hero {
+    min-height:calc(100vh - 4.2rem);
+    min-height:calc(100svh - 4.2rem);
+  }
+}
+
+.hero-grid {
+  display:grid;
+  gap:2rem;
+  align-items:center;
+}
+
+@media(min-width:860px) {
+  .hero-grid {
+    grid-template-columns:1.25fr .75fr;
+  }
+}
+
+.hero h1 {
+  font-size:clamp(2rem,5vw,3.1rem);
+  font-weight:800;
+  letter-spacing:-.02em;
+  margin:0 0 1rem;
+}
+
+.hero h1 span {
+  display:block;
+}
+
+.hero h1 .nm {
+  color:var(--accent);
+}
+
+.hero .sub {
+  font-family:"Bricolage Grotesque",system-ui,sans-serif;
+  font-weight:700;
+  font-size:1.2rem;
+  line-height:1.3;
+  margin:0 0 .75rem;
+}
+
+.hero .desc {
+  font-size:1.05rem;
+  line-height:1.7;
+  color:var(--muted);
+  max-width:34rem;
+  margin:0;
+}
+
+.fotobox {
+  justify-self:center;
+  margin:0;
+  background:var(--surface);
+  padding:.6rem;
+  border:2px solid var(--accent);
+  border-radius:999px 999px 1.6rem 1.6rem;
+  box-shadow:10px 10px 0 var(--accent2);
+}
+
+.foto {
+  display:block;
+  height:min(52vh,21rem);
+  width:auto;
+  max-width:100%;
+  aspect-ratio:4/5;
+  object-fit:cover;
+  border-radius:999px 999px 1.1rem 1.1rem;
+  background:var(--line);
+}
+
+@media(max-width:859px) {
+  .foto {
+    height:auto;
+    width:min(14rem,60vw);
+  }
+}
+
+/* Tentang */
+.about {
+  display:grid;
+  gap:1.5rem;
+}
+
+.about p {
+  text-align:justify;
+  hyphens:auto;
+  max-width:none;
+}
+
+dl {
+  display:grid;
+  grid-template-columns:max-content 1fr;
+  gap:.6rem 1.5rem;
+  margin:0;
+  padding-top:1.25rem;
+  border-top:1px solid var(--line);
+}
+
+dt {
+  font-weight:600;
+}
+
+dd {
+  margin:0;
+  color:var(--muted);
+}
+
+/* Keahlian */
+.skills {
+  display:flex;
+  flex-wrap:wrap;
+  gap:.6rem;
+  padding:0;
+  margin:0;
+  list-style:none;
+}
+
+.skills li {
+  padding:.4rem .95rem;
+  border:1px solid var(--line);
+  background:var(--surface);
+  border-radius:999px;
+  font-weight:600;
+  font-size:.98rem;
+}
+
+.alt .karya article {
+  background:var(--bg);
+}
+
+.alt .tech li {
+  background:var(--surface);
+}
+
+.skills li.utama {
+  background:var(--accent);
+  border-color:var(--accent);
+  color:var(--on-accent);
+}
+
+/* Kartu portofolio & sertifikat */
+.karya,.sert {
+  display:grid;
+  gap:1rem;
+}
+
+@media(min-width:760px) {
+  .karya,.sert {
+    grid-template-columns:repeat(2,1fr);
+  }
+}
+
+.karya article,.sert article {
+  background:var(--surface);
+  border:1px solid var(--line);
+  border-left:4px solid var(--accent);
+  border-radius:8px;
+  padding:1.2rem;
+}
+
+.karya h3,.sert h3 {
+  font-size:1.15rem;
+  margin-bottom:.4rem;
+}
+
+.karya p,.sert p {
+  color:var(--muted);
+  font-size:1rem;
+  margin:0;
+}
+
+.karya .lbl {
+  font-weight:600;
+  color:var(--accent2);
+  font-size:.9rem;
+  margin:.9rem 0 .4rem;
+}
+
+.karya a {
+  color:var(--accent);
+  font-weight:600;
+  text-decoration:none;
+  display:inline-block;
+  margin-top:.6rem;
+}
+
+.karya a:hover {
+  text-decoration:underline;
+}
+
+.tech {
+  display:flex;
+  flex-wrap:wrap;
+  gap:.4rem;
+  list-style:none;
+  margin:0;
+  padding:0;
+}
+
+.tech li {
+  padding:.2rem .7rem;
+  border:1px solid var(--line);
+  border-radius:999px;
+  font-size:.88rem;
+  font-weight:600;
+  color:var(--accent);
+  background:var(--bg);
+}
+
+.sert a.gambar {
+  display:block;
+  margin-bottom:.9rem;
+}
+
+.sert img {
+  display:block;
+  width:100%;
+  height:auto;
+  border:1px solid var(--line);
+  border-radius:6px;
+}
+
+/* Kontak */
+.contact {
+  background:var(--contact-bg);
+  color:var(--ink);
+  text-align:center;
+  padding:4.5rem 0;
+  border-top:0;
+}
+
+.contact h2 {
+  margin-bottom:.75rem;
+}
+
+.contact h2::after {
+  margin:.6rem auto 0;
+}
+
+.contact p {
+  margin:0 auto 2rem;
+  color:var(--muted);
+}
+
+.wa {
+  display:inline-flex;
+  align-items:center;
+  gap:.7rem;
+  padding:1.05rem 2rem;
+  background:var(--wa);
+  color:var(--wa-text);
+  border-radius:999px;
+  font:700 1.15rem "Bricolage Grotesque",system-ui,sans-serif;
+  text-decoration:none;
+  box-shadow:0 6px 0 rgba(11,31,68,.18);
+  transition:transform .12s,box-shadow .12s;
+}
+
+.wa:hover {
+  transform:translateY(2px);
+  box-shadow:0 4px 0 rgba(11,31,68,.18);
+}
+
+.wa svg {
+  width:1.6rem;
+  height:1.6rem;
+  fill:currentColor;
+}
+
+/* Footer */
+.site-footer {
+  background:var(--footer-bg);
+  color:#FFFFFF;
+  text-align:center;
+  border-top:1px solid rgba(255,255,255,.14);
+  padding:1.25rem 0 calc(1.25rem + env(safe-area-inset-bottom,0px));
+}
+
+.site-footer p {
+  margin:0 auto;
+  max-width:none;
+  font-size:.9rem;
+  opacity:.8;
+}
+
+@media(prefers-reduced-motion:reduce) {
+  * {
+    transition:none!important;
+    scroll-behavior:auto!important;
+  }
+}
